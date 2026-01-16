@@ -6,6 +6,7 @@
 :root {
 	--color-primary: #10b981; /* emerald-500 */
 	--color-secondary: #06b6d4; /* cyan-500 */
+	--nav-height: 80px; /* height of navbar - used to offset page content so it's not hidden under navbar */
 }
 
 /* Basic reset and smoothing */

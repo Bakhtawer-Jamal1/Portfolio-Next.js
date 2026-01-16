@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { 
   FiDownload, 
@@ -11,7 +12,6 @@ import {
   FiDatabase, 
   FiServer,
   FiAward,
-  FiCoffee,
   FiGithub,
   FiLinkedin,
   FiMail,
@@ -239,17 +239,13 @@ function Home() {
                 </div>
               </motion.a>
 
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-green-500 text-green-400 font-semibold rounded-xl hover:bg-green-500/10 transition-colors"
+              <Link
+                href="/contact"
+                className="px-8 py-4 border-2 border-green-500 text-green-400 font-semibold rounded-xl hover:bg-green-500/10 transition-colors inline-flex items-center"
               >
-                <div className="flex items-center space-x-3">
-                  <span>Get In Touch</span>
-                  <FiChevronRight />
-                </div>
-              </motion.a>
+                <span className="mr-3">Get In Touch</span>
+                <FiChevronRight />
+              </Link>
             </motion.div>
 
             {/* Social Links */}

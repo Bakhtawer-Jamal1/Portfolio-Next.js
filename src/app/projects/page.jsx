@@ -48,7 +48,7 @@ const ProjectCard = ({ title, desc, link, index, isClickable }) => {
         whileHover={{ y: -5 }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={`p-6 rounded-xl border transition-all duration-300 ${
+        className={`p-4 sm:p-6 rounded-xl border transition-all duration-300 ${
           isClickable 
             ? 'bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700 hover:border-green-500 cursor-pointer' 
             : 'bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-700/50 cursor-default'
@@ -58,7 +58,7 @@ const ProjectCard = ({ title, desc, link, index, isClickable }) => {
         <div className="flex justify-between items-start mb-4">
           <div>
             <motion.h3 
-              className={`text-xl font-bold ${isClickable ? 'text-green-400' : 'text-gray-400'}`}
+              className={`text-lg sm:text-xl font-bold ${isClickable ? 'text-green-400' : 'text-gray-400'}`}
               animate={{ 
                 color: isHovered && isClickable ? '#10B981' : isClickable ? '#34D399' : '#9CA3AF'
               }}
@@ -192,10 +192,10 @@ export default function Projects() {
   }, []);
 
   return (
-    <section className="relative py-20 px-6">
+    <section className="relative py-16 sm:py-20 px-4 sm:px-6">
       {/* Animated background elements */}
       <motion.div
-        className="absolute top-20 right-10 w-40 h-40 bg-gradient-to-r from-green-500/5 to-emerald-600/5 rounded-full blur-2xl -z-10"
+        className="absolute top-20 right-10 w-32 sm:w-40 h-32 sm:h-40 bg-gradient-to-r from-green-500/5 to-emerald-600/5 rounded-full blur-2xl -z-10"
         animate={{
           scale: [1, 1.1, 1],
           opacity: [0.3, 0.5, 0.3],
@@ -213,7 +213,7 @@ export default function Projects() {
         >
           <div className="flex items-center gap-4 mb-6">
             <motion.div
-              className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg flex items-center justify-center"
+              className="w-10 sm:w-12 h-10 sm:h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg flex items-center justify-center"
               animate={{
                 rotate: [0, 360],
               }}
@@ -222,7 +222,7 @@ export default function Projects() {
               <span className="text-white font-bold">P</span>
             </motion.div>
             <div>
-              <h2 className="text-4xl font-bold">
+              <h2 className="text-3xl sm:text-4xl font-bold">
                 <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
                   Projects
                 </span>
@@ -239,14 +239,14 @@ export default function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ delay: 0.5 }}
-            className="text-gray-400 text-lg"
+            className="text-gray-400 text-base md:text-lg"
           >
             Showcasing my recent work and experiments
           </motion.p>
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {/* Clickable Admin Panel Project */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -285,7 +285,7 @@ export default function Projects() {
           transition={{ delay: 0.8 }}
           className="mt-12 p-4 bg-gradient-to-r from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700/50"
         >
-          <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-sm text-gray-400">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
               <span>Clickable Project</span>

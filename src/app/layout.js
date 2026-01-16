@@ -5,6 +5,9 @@ import Footer from "./components/Footer";
 export const metadata = {
   title: "Bakhtawer Jamal | Portfolio",
   description: "MERN Stack & Next.js Developer Portfolio",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -12,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-black text-white">
         <Navbar />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen" style={{ paddingTop: 'var(--nav-height)' }}>{children}</main>
         <Footer />
       </body>
     </html>
