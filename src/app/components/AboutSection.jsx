@@ -43,10 +43,10 @@ export default function AboutSection() {
   ];
 
   const certifications = [
-    { name: 'HTML 5 Certification', issuer: 'CISCO', year: '2024' },
-    { name: 'CSS3 Certification', issuer: 'CISCO', year: '2024' },
-    { name: 'JavaScript Essentials 1', issuer: 'CISCO', year: '2024' },
-    { name: 'JavaScript Essentials 2', issuer: 'CISCO', year: '2024' },
+    { name: 'HTML 5 Certification', issuer: 'CISCO', year: '2025' },
+    { name: 'CSS3 Certification', issuer: 'CISCO', year: '2025' },
+    { name: 'JavaScript Essentials 1', issuer: 'CISCO', year: '2025' },
+    { name: 'JavaScript Essentials 2', issuer: 'CISCO', year: '2025' },
   ];
 
   const education = [
@@ -212,7 +212,7 @@ export default function AboutSection() {
                 <div className="p-2 sm:p-3 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg sm:rounded-xl mr-3 sm:mr-4">
                   <FiCalendar className="text-purple-500 text-xl sm:text-2xl" />
                 </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">Education</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Education</h2>
               </div>
               
               {education.map((edu, index) => (
@@ -330,17 +330,18 @@ export default function AboutSection() {
                 key={index}
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ 
-                  duration: 0.3, 
+                transition={{
+                  duration: 0.3,
                   delay: index * 0.1,
                   type: "spring",
-                  stiffness: 200
+                  stiffness: 200,
+                  rotate: { type: "tween", duration: 0.6 }
                 }}
                 viewport={{ once: true }}
                 whileHover={{ 
                   scale: 1.1,
                   y: -5,
-                  rotate: [0, 5, -5, 5, 0]
+                    rotate: [0, 5, -5, 5, 0]
                 }}
                 className="relative group"
               >

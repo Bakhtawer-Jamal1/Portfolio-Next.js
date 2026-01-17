@@ -26,20 +26,20 @@ const ProjectCard = ({ title, desc, link, index, isClickable }) => {
           <span className="text-xs text-gray-400">HTML/CSS</span>
         </div>
       );
-    } else {
-      return (
-        <div className="flex gap-2">
-          <SiNextdotjs className="text-white" />
-          <SiTailwindcss className="text-cyan-300" />
-          <SiNodedotjs className="text-green-500" />
-          <SiMongodb className="text-green-400" />
-        </div>
-      );
-    }
+          } else {
+            return (
+              <div className="flex gap-2">
+                <SiNextdotjs className="text-white" />
+                <SiTailwindcss className="text-cyan-300" />
+                <SiNodedotjs className="text-green-500" />
+                {!title.includes("Portfolio") && <SiMongodb className="text-green-400" />}
+              </div>
+            );
+          }
   };
 
   const cardContent = (
-    <div className="relative">
+    <div className="relative h-full">
       {/* Card */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ const ProjectCard = ({ title, desc, link, index, isClickable }) => {
         whileHover={{ y: -5 }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={`p-4 sm:p-6 rounded-xl border transition-all duration-300 ${
+        className={`p-4 sm:p-6 rounded-xl border transition-all duration-300 h-full flex flex-col justify-between ${
           isClickable 
             ? 'bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700 hover:border-green-500 cursor-pointer' 
             : 'bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-700/50 cursor-default'
@@ -170,12 +170,12 @@ const ProjectCard = ({ title, desc, link, index, isClickable }) => {
       href={link} 
       target="_blank" 
       rel="noopener noreferrer"
-      className="block"
+      className="block h-full"
     >
       {cardContent}
     </a>
   ) : (
-    <div className="block">
+    <div className="block h-full">
       {cardContent}
     </div>
   );
@@ -192,7 +192,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section className="relative py-16 sm:py-20 px-4 sm:px-6">
+    <section className="relative py-16 sm:py-20 px-4 sm:px-6 overflow-x-hidden">
       {/* Animated background elements */}
       <motion.div
         className="absolute top-20 right-10 w-32 sm:w-40 h-32 sm:h-40 bg-gradient-to-r from-green-500/5 to-emerald-600/5 rounded-full blur-2xl -z-10"
@@ -252,6 +252,7 @@ export default function Projects() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="h-full"
           >
             <ProjectCard
               title="Restaurant Admin Panel"
@@ -267,10 +268,11 @@ export default function Projects() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 20 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            className="h-full"
           >
             <ProjectCard
               title="Portfolio Website"
-              desc="Personal portfolio built with Next.js, Tailwind, Node.js & MongoDB."
+                desc="Personal portfolio built with Next.js, Tailwind, and Node.js."
               link="#"
               index={1}
               isClickable={false}

@@ -35,6 +35,22 @@ export default function Navbar() {
     router.push('/#about-section');
   };
 
+  // Centralized nav click handler for links without special behavior
+  const handleNavClick = (e, path) => {
+    e.preventDefault();
+    setIsOpen(false);
+    if (path === '/') {
+      router.push('/');
+      if (typeof window !== 'undefined') window.scrollTo(0, 0);
+      return;
+    }
+    if (path === '#about-section') {
+      handleAboutClick(e);
+      return;
+    }
+    router.push(path);
+  };
+
   const navItems = [
     { name: 'Home', path: '/', icon: <FiHome />, onClick: null },
     { name: 'About', path: '#about-section', icon: <FiUser />, onClick: handleAboutClick },
@@ -45,7 +61,12 @@ export default function Navbar() {
   // Check if current path matches nav item
   const isActive = (path) => {
     if (path === '/') return pathname === '/';
-    if (path === '#about-section') return pathname.includes('/#about') || pathname === '/';
+    if (path === '#about-section') {
+      if (typeof window !== 'undefined') {
+        return window.location.hash === '#about-section';
+      }
+      return false;
+    }
     return pathname === path;
   };
 
@@ -129,14 +150,14 @@ export default function Navbar() {
                     )}
                   </a>
                 ) : (
-                  <Link
+                  <a
                     href={item.path}
+                    onClick={(e) => handleNavClick(e, item.path)}
                     className={`flex items-center space-x-2 transition-colors ${
                       isActive(item.path)
                         ? 'text-green-500'
                         : 'text-gray-300 hover:text-green-500'
                     }`}
-                    onClick={() => setIsOpen(false)}
                   >
                     <span>{item.icon}</span>
                     <span className="font-medium">{item.name}</span>
@@ -146,7 +167,7 @@ export default function Navbar() {
                         className="w-2 h-2 bg-green-500 rounded-full"
                       />
                     )}
-                  </Link>
+                  </a>
                 )}
               </motion.div>
             ))}
@@ -267,9 +288,9 @@ export default function Navbar() {
                             )}
                           </a>
                         ) : (
-                          <Link
+                          <a
                             href={item.path}
-                            onClick={() => setIsOpen(false)}
+                            onClick={(e) => handleNavClick(e, item.path)}
                             className={`flex items-center justify-between p-3 sm:p-4 rounded-lg transition-all ${
                               isActive(item.path)
                                 ? 'bg-gradient-to-r from-green-500/20 to-emerald-600/20 text-green-500 border border-green-500/30'
@@ -287,7 +308,7 @@ export default function Navbar() {
                                 className="w-2 h-2 bg-green-500 rounded-full"
                               />
                             )}
-                          </Link>
+                          </a>
                         )}
                       </motion.div>
                     ))}

@@ -81,7 +81,7 @@ function Home() {
 
   const stats = [
     { icon: <FiCode />, number: '10+', label: 'Projects', color: 'from-blue-500 to-cyan-400' },
-    { icon: <FiDatabase />, number: '2+', label: 'Years Experience', color: 'from-green-500 to-emerald-400' },
+    { icon: <FiDatabase />, number: '1+', label: 'Years Experience', color: 'from-green-500 to-emerald-400' },
     { icon: <FiServer />, number: '100%', label: 'Dedication', color: 'from-purple-500 to-pink-400' },
     { icon: <FiAward />, number: '5+', label: 'Certifications', color: 'from-orange-500 to-yellow-400' },
   ];
